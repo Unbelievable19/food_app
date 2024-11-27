@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/components/custom_button.dart';
+import 'package:food_app/models/restaurant.dart';
+import 'package:provider/provider.dart';
 
 import '../models/food.dart';
 
@@ -21,21 +23,43 @@ class FoodPage extends StatefulWidget {
 }
 
 class _FoodPageState extends State<FoodPage> {
+
+  ///method to add to cart
+  void addToCart(Food food, Map<Addon, bool> selectedAddons) {
+
+    ///close the current food page to go back to menu
+    Navigator.pop(context);
+
+    ///format the selected addons
+    List<Addon> currentlySelectedAddons = [];
+    for (Addon addon in widget.food.availableAddons) {
+      if (widget.selectedAddons[addon] == true) {
+        currentlySelectedAddons.add(addon);
+      }
+    }
+    ///add to cart
+    context.read<Restaurant>().addToCart(food, currentlySelectedAddons);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Scaffold(
           appBar: AppBar(
-            title: Text(widget.food.name),
+            //title: Text(widget.food.name),
           ),
           body: Column(
             children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(15),
-                    bottomRight: Radius.circular(15)),
-                child: Image.asset(widget.food.imagePath),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ClipRRect(
+                  // borderRadius: const BorderRadius.only(
+                  //     bottomLeft: Radius.circular(15),
+                  //     bottomRight: Radius.circular(15)),
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(widget.food.imagePath),
+                ),
               ),
               Row(
                 children: [
@@ -74,8 +98,6 @@ class _FoodPageState extends State<FoodPage> {
                                     .colorScheme
                                     .inverseSurface),
                           ),
-                          //SizedBox(height: 6)
-                          //Divider(),
                         ],
                       ),
                     ),
@@ -83,7 +105,10 @@ class _FoodPageState extends State<FoodPage> {
                 ],
               ),
               const SizedBox(height: 6),
-              Divider(color: Theme.of(context).colorScheme.tertiary, height: 1),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: Divider(color: Theme.of(context).colorScheme.tertiary, height: 1),
+              ),
               const SizedBox(height: 6),
               Text(
                 "Добавки",
@@ -92,8 +117,6 @@ class _FoodPageState extends State<FoodPage> {
                     fontSize: 16),
               ),
               const SizedBox(height: 6),
-              // Divider(
-              //     color: Theme.of(context).colorScheme.inversePrimary, height: 1),
               Flexible(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
@@ -150,7 +173,7 @@ class _FoodPageState extends State<FoodPage> {
                 padding: const EdgeInsets.all(18.0),
                 child: CustomButton(
                   text: "Добавить в корзину",
-                  onTap: () {},
+                  onTap: () => addToCart(widget.food, widget.selectedAddons),
                 ),
               ),
             ],

@@ -4,7 +4,7 @@ class Food {
   final String imagePath;       // закинуть фотки в либу, либо грузить с сервера
   final int price;              // цена 499 руб
   final FoodCategory category;  // роллы (либо холодные роллы)
-  List<Addon> availableAddons;  // допы (скорее для пиццы/бургера, чем для ролл)
+  List<Addon> availableAddons;  // допы
 
   Food({required this.name,
     required this.description,
