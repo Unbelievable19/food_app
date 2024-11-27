@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'food.dart';
 
-class Restaurant extends ChangeNotifier{
+class Restaurant extends ChangeNotifier {
   ///список позиций в меню
   final List<Food> _menu = [
     //rolls
@@ -50,7 +50,8 @@ class Restaurant extends ChangeNotifier{
     //pizza
     Food(
       name: "Пицца Диабло (острая)",
-      description: "Пиздец какая вкусная пицца",
+      description:
+          "Соус красный, Сыр Моцарелла, Куриная грудка, Пеперони, Халапеньо, Соус Острый.",
       imagePath: "assets/images/pizza/1.png",
       price: 579,
       category: FoodCategory.pizza,

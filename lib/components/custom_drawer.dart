@@ -15,11 +15,13 @@ class CustomDrawer extends StatelessWidget {
           ///app logo
           Padding(
             padding: const EdgeInsets.only(top: 60),
-            child: Icon(
-              Icons.food_bank_outlined,
-              size: 100,
-              color: Theme.of(context).colorScheme.inversePrimary,
-            ),
+            child:
+              Image.asset("assets/logos/seafoodlogo.png", width: 200,),
+            // Icon(
+            //   Icons.food_bank_outlined,
+            //   size: 100,
+            //   color: Theme.of(context).colorScheme.inversePrimary,
+            // ),
           ),
           Padding(
             padding: const EdgeInsets.all(25.0),
