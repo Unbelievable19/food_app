@@ -61,119 +61,132 @@ class _FoodPageState extends State<FoodPage> {
                   child: Image.asset(widget.food.imagePath),
                 ),
               ),
-              Row(
-                children: [
-                  Flexible(
-                    child: Padding(
-                      padding:
-                          const EdgeInsets.only(left: 20, top: 20, right: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            widget.food.name,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .inverseSurface),
+              Container(
+                color: Theme.of(context).colorScheme.background,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(left: 20, top: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  widget.food.name,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inverseSurface),
+                                ),
+                                Text(
+                                  widget.food.description,
+                                  style: TextStyle(
+                                      //fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary),
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  widget.food.price.toString() + '\₽',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 23,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inverseSurface),
+                                ),
+                              ],
+                            ),
                           ),
-                          Text(
-                            widget.food.description,
-                            style: TextStyle(
-                                //fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            widget.food.price.toString() + '\₽',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 23,
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .inverseSurface),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 6),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Divider(color: Theme.of(context).colorScheme.tertiary, height: 1),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      "Добавки",
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.inverseSurface,
+                          fontSize: 16),
+                    ),
+                    const SizedBox(height: 6),
+                  ],
+                ),
               ),
-              const SizedBox(height: 6),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Divider(color: Theme.of(context).colorScheme.tertiary, height: 1),
-              ),
-              const SizedBox(height: 6),
-              Text(
-                "Добавки",
-                style: TextStyle(
-                    color: Theme.of(context).colorScheme.inverseSurface,
-                    fontSize: 16),
-              ),
-              const SizedBox(height: 6),
               Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Theme.of(context).colorScheme.tertiary),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: ListView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      //physics: NeverScrollableScrollPhysics(),
-                      itemCount: widget.food.availableAddons.length,
-                      itemBuilder: (context, index) {
-                        Addon addon = widget.food.availableAddons[index];
-                        return CheckboxListTile(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            checkColor: Colors.green,
-                            fillColor: MaterialStateProperty.all(
-                                Theme.of(context).colorScheme.tertiary),
-                            title: Text(
-                              addon.name,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .inversePrimary),
-                            ),
-                            subtitle: Text(
-                              addon.price.toString() + '\₽',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .inversePrimary),
-                            ),
-                            value: widget.selectedAddons[addon],
-                            //checkColor: Colors.green,
-                            //tileColor: Colors.red,
-                            onChanged: (bool? value) {
-                              setState(() {
-                                widget.selectedAddons[addon] = value!;
+                child: Container(
+                  color: Theme.of(context).colorScheme.background,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Theme.of(context).colorScheme.tertiary),
+                          borderRadius: BorderRadius.circular(15)),
+                      child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        //physics: NeverScrollableScrollPhysics(),
+                        itemCount: widget.food.availableAddons.length,
+                        itemBuilder: (context, index) {
+                          Addon addon = widget.food.availableAddons[index];
+                          return CheckboxListTile(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              checkColor: Colors.green,
+                              fillColor: MaterialStateProperty.all(
+                                  Theme.of(context).colorScheme.tertiary),
+                              title: Text(
+                                addon.name,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary),
+                              ),
+                              subtitle: Text(
+                                addon.price.toString() + '\₽',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary),
+                              ),
+                              value: widget.selectedAddons[addon],
+                              //checkColor: Colors.green,
+                              //tileColor: Colors.red,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  widget.selectedAddons[addon] = value!;
+                                });
                               });
-                            });
-                      },
+                        },
+                      ),
                     ),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: CustomButton(
-                  text: "Добавить в корзину",
-                  onTap: () => addToCart(widget.food, widget.selectedAddons),
+              Container(
+                color: Theme.of(context).colorScheme.background,
+                child: Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: CustomButton(
+                    text: "Добавить в корзину",
+                    onTap: () => addToCart(widget.food, widget.selectedAddons),
+                  ),
                 ),
               ),
             ],
