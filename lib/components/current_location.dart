@@ -7,18 +7,18 @@ class CurrentLocation extends StatelessWidget {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              title: const Text("Your location"),
+              title: const Text("Локация"),
               content: const TextField(
-                decoration: InputDecoration(hintText: "Search address"),
+                decoration: InputDecoration(hintText: "Ваш адрес", hintStyle: TextStyle(color: Colors.grey)),
               ),
               actions: [
                 MaterialButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text("Cancel"),
-                ),
+                  child: Text("Назад", style: TextStyle(color: Colors.black),)),
+
                 MaterialButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text("Save"),
+                  child: Text("Сохранить", style: TextStyle(color: Colors.black)),
                 ),
               ],
             ));

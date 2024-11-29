@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/models/cart_item.dart';
+import 'package:intl/intl.dart';
 
 import 'food.dart';
 
@@ -231,6 +232,8 @@ class Restaurant extends ChangeNotifier {
 
   List<Food> get menu => _menu;
 
+  List<CartItem> get cart => _cart;
+
   ///операции(логика)
   ///user cart
   List<CartItem> _cart = [];
@@ -300,6 +303,49 @@ class Restaurant extends ChangeNotifier {
   }
 
   ///generate a receipt
+  String displayCartReceipt() {
+    final receipt = StringBuffer();
+    //receipt.writeln("Ваш чек");
+    //receipt.writeln();
+
+    String formattedDate =
+        DateFormat('Дата: dd.MM.yyyy').format(DateTime.now());
+    String formattedDateTime =
+    DateFormat('Время: HH:mm').format(DateTime.now());
+
+    receipt.writeln(formattedDate);
+    receipt.writeln(formattedDateTime);
+    receipt.writeln();
+    receipt.writeln();
+    //receipt.writeln("------------");
+
+    for (final cartItem in _cart) {
+      receipt.writeln(
+        "${cartItem.quantity} x ${cartItem.food.name} - ${_formatPrice(cartItem.food.price)}");
+      if (cartItem.selectedAddons.isNotEmpty) {
+        receipt.writeln("  Дополнения: ${_formatAddons(cartItem.selectedAddons)}");
+      }
+      receipt.writeln();
+    }
+
+    //receipt.writeln("------------");
+    receipt.writeln();
+    receipt.writeln("Количество позиций: ${getTotalItemCount()}");
+    receipt.writeln("Цена: ${_formatPrice(getTotalPrice())}");
+
+    return receipt.toString();
+  }
+
+
   ///format double value into money
+  String _formatPrice(int price) {
+    return "\Р${price.toStringAsFixed(2)}";
+  }
+
   ///format list of addons into a string summary
+  String _formatAddons(List<Addon> addons) {
+    return addons
+        .map((addon) => "${addon.name} (${_formatPrice(addon.price)})")
+        .join(", ");
+  }
 }

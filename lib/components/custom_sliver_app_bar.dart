@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/pages/cart_page.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
   final Widget child;
@@ -14,12 +15,24 @@ class CustomSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       //automaticallyImplyLeading: false,
+      //snap: true,
       expandedHeight: 340,
       collapsedHeight: 120,
-      floating: false,
+      floating: true,
       pinned: true,
-      actions: [IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart))],
-      title: Text('Sea Food Bar', style: TextStyle(fontWeight: FontWeight.bold),),
+      actions: [
+        IconButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const CartPage()));
+          },
+          icon: const Icon(Icons.shopping_cart),
+        ),
+      ],
+      title: const Text(
+        'Sea Food Bar',
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
       //title: Image.asset("assets/logos/seafoodlogo.png", width: 100,),
       centerTitle: true,
       //backgroundColor: Theme.of(context).colorScheme.background,

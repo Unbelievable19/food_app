@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
 
             /// message
             Text(
-              "Akinori",
+              "щас бы мороженку похавать",
               style: TextStyle(
                 fontSize: 16,
                 color: Theme.of(context).colorScheme.inversePrimary,

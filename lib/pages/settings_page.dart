@@ -10,7 +10,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
+        title: Text("Настройки"),
         centerTitle: true,
       ),
       body: Column(
@@ -26,7 +26,7 @@ class SettingsPage extends StatelessWidget {
               children: [
                 ///dark mode
                 Text(
-                  "Dark Mode",
+                  "Тёмная тема",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.inversePrimary,

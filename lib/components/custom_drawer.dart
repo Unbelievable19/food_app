@@ -45,12 +45,12 @@ class CustomDrawer extends StatelessWidget {
 
           ///home list tile
           CustomDrawerTile(
-            text: "H O M E",
-            icon: Icons.home_filled,
+            text: "М Е Н Ю",
+            icon: Icons.fastfood_outlined,
             onTap: () => Navigator.pop(context),
           ),
           CustomDrawerTile(
-            text: "S E T T I N G S",
+            text: "Н А С Т Р О Й К И",
             icon: Icons.settings,
             onTap: () {
               Navigator.pop(context);
@@ -62,7 +62,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           const Spacer(),
           CustomDrawerTile(
-            text: "L O G O U T",
+            text: "В Ы Х О Д",
             icon: Icons.logout,
             onTap: () {},
           ),
