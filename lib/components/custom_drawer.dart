@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/components/custom_drawer_tile.dart';
+import 'package:food_app/themes/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../pages/settings_page.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
+
+
+  // void checkDarkLightMode(){
+  //   ThemeProvider.isDarkMode;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +23,13 @@ class CustomDrawer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 60),
             child:
-              Image.asset("assets/logos/seafoodlogo.png", width: 200,),
+            Image.asset(
+              Theme.of(context).brightness == Brightness.dark ? 'assets/logos/seafoodlogolight.png' : 'assets/logos/seafoodlogo.png',
+              width: 200,
+            ),
+            // Image.asset(
+            //   "assets/logos/seafoodlogolight.png", width: 200,
+            // ),
             // Icon(
             //   Icons.food_bank_outlined,
             //   size: 100,

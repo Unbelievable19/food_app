@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 ThemeData darkMode = ThemeData(
+  brightness: Brightness.dark,
   scaffoldBackgroundColor: const Color.fromARGB(255, 20, 20, 20),
   //scrollbarTheme: ,
   // dividerColor: const Color.fromARGB(255, 30, 30, 30),
@@ -12,6 +13,7 @@ ThemeData darkMode = ThemeData(
     iconTheme: IconThemeData(color: Colors.grey.shade300),
   ),
   colorScheme: ColorScheme.light(
+    brightness: Brightness.dark,
     background: const Color.fromARGB(255, 20, 20, 20),
     primary: const Color.fromARGB(255, 122, 122, 122),
     secondary: const Color.fromARGB(255, 30, 30, 30),
