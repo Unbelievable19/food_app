@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "883542261451",
+    "project_id": "seafoodbarappbackend",
+    "storage_bucket": "seafoodbarappbackend.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883542261451:android:8be44212fa4d5d94d0a54e",
+        "android_client_info": {
+          "package_name": "com.example.food_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmLnhL4foutFZ0YN1q9XEDC_vUsF9F6ag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
