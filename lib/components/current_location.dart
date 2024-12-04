@@ -1,24 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/models/restaurant.dart';
+import 'package:provider/provider.dart';
 
-class CurrentLocation extends StatelessWidget {
+class CurrentLocation extends StatefulWidget {
   const CurrentLocation({super.key});
+
+  @override
+  State<CurrentLocation> createState() => _CurrentLocationState();
+}
+
+class _CurrentLocationState extends State<CurrentLocation> {
+  TextEditingController textController = TextEditingController();
 
   void openLocationSearchBox(BuildContext context) {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
               title: const Text("Локация"),
-              content: const TextField(
-                decoration: InputDecoration(hintText: "Ваш адрес", hintStyle: TextStyle(color: Colors.grey)),
+              content: TextField(
+                controller: textController,
+                decoration: const InputDecoration(
+                    hintText: "Ваш адрес",
+                    hintStyle: TextStyle(color: Colors.grey)),
               ),
               actions: [
                 MaterialButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text("Назад", style: TextStyle(color: Colors.black),)),
-
+                    onPressed: () => Navigator.pop(context),
+                    child: Text(
+                      "Назад",
+                      style: TextStyle(color: Colors.black),
+                    )),
                 MaterialButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text("Сохранить", style: TextStyle(color: Colors.black)),
+                  onPressed: () {
+                    String newAddress = textController.text;
+                    context.read<Restaurant>().updateDeliveryAddress(newAddress);
+                    Navigator.pop(context);
+                    textController.clear();
+                  },
+                  child:
+                      Text("Сохранить", style: TextStyle(color: Colors.black)),
                 ),
               ],
             ));
@@ -37,10 +57,13 @@ class CurrentLocation extends StatelessWidget {
             onTap: () => openLocationSearchBox(context),
             child: Row(
               children: [
-                Text("Комсомольская 196а",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.inversePrimary,
-                        fontWeight: FontWeight.bold)),
+                Consumer<Restaurant>(
+                  builder: (context, restaurant, child) => Text(
+                      restaurant.deliveryAddress,
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.inversePrimary,
+                          fontWeight: FontWeight.bold)),
+                ),
                 Icon(Icons.keyboard_arrow_down_rounded)
               ],
             ),

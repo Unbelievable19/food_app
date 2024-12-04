@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/components/custom_drawer_tile.dart';
+import 'package:food_app/services/auth/auth_service.dart';
 import 'package:food_app/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -8,10 +9,10 @@ import '../pages/settings_page.dart';
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
 
-
-  // void checkDarkLightMode(){
-  //   ThemeProvider.isDarkMode;
-  // }
+  void logout() {
+    final authService = AuthService();
+    authService.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +65,10 @@ class CustomDrawer extends StatelessWidget {
           CustomDrawerTile(
             text: "В Ы Х О Д",
             icon: Icons.logout,
-            onTap: () {},
+            onTap: () {
+              logout();
+              Navigator.pop(context);
+            },
           ),
           const SizedBox(height: 5)
 

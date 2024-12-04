@@ -230,13 +230,20 @@ class Restaurant extends ChangeNotifier {
     ),
   ];
 
-  List<Food> get menu => _menu;
 
-  List<CartItem> get cart => _cart;
-
-  ///операции(логика)
   ///user cart
   List<CartItem> _cart = [];
+
+  ///delivery address(юзер может поменять/обновить)
+  String _deliveryAddress = "бла бла 151 улица";
+
+
+  List<Food> get menu => _menu;
+  List<CartItem> get cart => _cart;
+  String get deliveryAddress => _deliveryAddress;
+
+  ///операции(логика)
+
 
   ///add to cart
   void addToCart(Food food, List<Addon> selectedAddons) {
@@ -302,6 +309,13 @@ class Restaurant extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///update del address
+  void updateDeliveryAddress(String newAddress) {
+    _deliveryAddress = newAddress;
+    notifyListeners();
+  }
+
+
   ///generate a receipt
   String displayCartReceipt() {
     final receipt = StringBuffer();
@@ -332,6 +346,8 @@ class Restaurant extends ChangeNotifier {
     receipt.writeln();
     receipt.writeln("Количество позиций: ${getTotalItemCount()}");
     receipt.writeln("Цена: ${_formatPrice(getTotalPrice())}");
+    receipt.writeln();
+    receipt.writeln("Адрес доставки: $deliveryAddress");
 
     return receipt.toString();
   }

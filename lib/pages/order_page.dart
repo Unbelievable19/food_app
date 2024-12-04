@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/components/receipt.dart';
 import 'package:food_app/models/restaurant.dart';
+import 'package:food_app/services/database/firestore.dart';
 import 'package:provider/provider.dart';
 
 class OrderPage extends StatefulWidget {
@@ -11,6 +12,18 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
+
+  FirestoreService db = FirestoreService();
+
+  @override
+  void initState() {
+    super.initState();
+
+    String receiptdb = context.read<Restaurant>().displayCartReceipt();
+    db.saveOrderToDatabase(receiptdb);
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

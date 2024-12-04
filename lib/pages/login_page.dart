@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/components/custom_button.dart';
 import 'package:food_app/components/custom_textfield.dart';
-import 'home_page.dart';
+import 'package:food_app/services/auth/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
@@ -13,35 +13,51 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  /// text editing controllers
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   /// login method
-  void login() {
+  void login() async {
+    final _authService = AuthService();
 
+    try {
+      await _authService.signInWithEmailPassword(
+          emailController.text, passwordController.text);
+    }
+    catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(title: Text(e.toString())));
+    }
+  }
 
-    ///navigate to home page
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomePage(),
-        ));
+  void forgotPw() {
+    showDialog(
+        context: context,
+        builder: (context) =>
+        const AlertDialog(title: Text("Пароль не совпадает")));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme
+          .of(context)
+          .colorScheme
+          .background,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
             /// logo
             Icon(
               Icons.lock_open_rounded,
               size: 100,
-              color: Theme.of(context).colorScheme.inversePrimary,
+              color: Theme
+                  .of(context)
+                  .colorScheme
+                  .inversePrimary,
             ),
 
             const SizedBox(height: 25),
@@ -51,7 +67,10 @@ class _LoginPageState extends State<LoginPage> {
               "щас бы мороженку похавать",
               style: TextStyle(
                 fontSize: 16,
-                color: Theme.of(context).colorScheme.inversePrimary,
+                color: Theme
+                    .of(context)
+                    .colorScheme
+                    .inversePrimary,
               ),
             ),
 
@@ -90,7 +109,10 @@ class _LoginPageState extends State<LoginPage> {
                 Text(
                   "Not a member?",
                   style: TextStyle(
-                      color: Theme.of(context).colorScheme.inversePrimary),
+                      color: Theme
+                          .of(context)
+                          .colorScheme
+                          .inversePrimary),
                 ),
                 const SizedBox(width: 4),
                 GestureDetector(
@@ -98,7 +120,10 @@ class _LoginPageState extends State<LoginPage> {
                   child: Text(
                     "Register now",
                     style: TextStyle(
-                        color: Theme.of(context).colorScheme.inversePrimary,
+                        color: Theme
+                            .of(context)
+                            .colorScheme
+                            .inversePrimary,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
