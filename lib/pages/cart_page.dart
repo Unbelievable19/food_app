@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_app/components/custom_button.dart';
 import 'package:food_app/components/custom_cart_tile.dart';
 import 'package:food_app/models/restaurant.dart';
+import 'package:food_app/pages/customer_page.dart';
 import 'package:provider/provider.dart';
 
 import 'order_page.dart';
@@ -110,7 +111,7 @@ class CartPage extends StatelessWidget {
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const OrderPage())),
+                                builder: (context) => const CustomerPage())),
                       )
                     : null),
           ],

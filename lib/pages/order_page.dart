@@ -29,6 +29,7 @@ class _OrderPageState extends State<OrderPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Оформление заказа"),
+        automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.secondary,
       ),

@@ -10,6 +10,8 @@ import 'package:food_app/models/restaurant.dart';
 import 'package:food_app/pages/food_page.dart';
 import 'package:provider/provider.dart';
 
+import '../components/phone_number.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -77,13 +79,14 @@ class _HomePageState extends State<HomePage>
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Divider(
-                          indent: 27,
-                          endIndent: 27,
-                          color: Theme.of(context).colorScheme.secondary,
-                        ),
-                        const CurrentLocation(),
-                        const CustomDescriptionBox(),
+                        // Divider(
+                        //   indent: 27,
+                        //   endIndent: 27,
+                        //   color: Theme.of(context).colorScheme.secondary,
+                        // ),
+                        //const CurrentLocation(),
+                        //const PhoneNumber(),
+                        //const CustomDescriptionBox(),
                       ],
                     ))
               ],

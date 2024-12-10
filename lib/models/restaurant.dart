@@ -6,12 +6,14 @@ import 'package:intl/intl.dart';
 import 'food.dart';
 
 class Restaurant extends ChangeNotifier {
+
+
   ///список позиций в меню
   final List<Food> _menu = [
     //rolls
     Food(
       name: "Филадельфия классик",
-      description: "Пиздец какой вкусный ролл",
+      description: "Очень вкусный ролл",
       imagePath: "assets/images/rolls/1.png",
       price: 259,
       category: FoodCategory.rolls,
@@ -21,7 +23,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Дракон",
-      description: "Пиздец какой вкусный ролл",
+      description: "Очень вкусный ролл",
       imagePath: "assets/images/rolls/2.png",
       price: 259,
       category: FoodCategory.rolls,
@@ -31,7 +33,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Калифорния с Креветкой",
-      description: "Пиздец какой вкусный ролл",
+      description: "Очень вкусный ролл",
       imagePath: "assets/images/rolls/3.png",
       price: 259,
       category: FoodCategory.rolls,
@@ -41,7 +43,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Инь-Янь Ролл",
-      description: "Пиздец какой вкусный ролл",
+      description: "Очень вкусный ролл",
       imagePath: "assets/images/rolls/4.png",
       price: 259,
       category: FoodCategory.rolls,
@@ -70,7 +72,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Пицца Пеперони",
-      description: "Пиздец какая вкусная пицца",
+      description: "Очень вкусная пицца",
       imagePath: "assets/images/pizza/2.png",
       price: 529,
       category: FoodCategory.pizza,
@@ -86,7 +88,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Пицца Ветчина-Грибы",
-      description: "Пиздец какая вкусная пицца",
+      description: "Очень вкусная пицца",
       imagePath: "assets/images/pizza/3.png",
       price: 499,
       category: FoodCategory.pizza,
@@ -102,7 +104,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Пицца Цыплёнок Барбекю",
-      description: "Пиздец какая вкусная пицца",
+      description: "Очень вкусная пицца",
       imagePath: "assets/images/pizza/4.png",
       price: 549,
       category: FoodCategory.pizza,
@@ -118,7 +120,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Пицца Цыплёнок Ранч",
-      description: "Пиздец какая вкусная пицца",
+      description: "Очень вкусная пицца",
       imagePath: "assets/images/pizza/5.png",
       price: 549,
       category: FoodCategory.pizza,
@@ -134,7 +136,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Пицца Мясная",
-      description: "Пиздец какая вкусная пицца",
+      description: "Очень вкусная пицца",
       imagePath: "assets/images/pizza/6.png",
       price: 629,
       category: FoodCategory.pizza,
@@ -152,7 +154,7 @@ class Restaurant extends ChangeNotifier {
     //wok
     Food(
       name: "Тяхан с Говядиной",
-      description: "Пиздец какой вкусный вок",
+      description: "Очень вкусный вок",
       imagePath: "assets/images/wok/1.jpg",
       price: 419,
       category: FoodCategory.wok,
@@ -164,7 +166,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Удон с Креветкой",
-      description: "Пиздец какой вкусный вок",
+      description: "Очень вкусный вок",
       imagePath: "assets/images/wok/2.jpg",
       price: 449,
       category: FoodCategory.wok,
@@ -176,7 +178,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Удон с Курицей",
-      description: "Пиздец какой вкусный вок",
+      description: "Очень вкусный вок",
       imagePath: "assets/images/wok/3.jpg",
       price: 399,
       category: FoodCategory.wok,
@@ -190,7 +192,7 @@ class Restaurant extends ChangeNotifier {
     //drinks
     Food(
       name: "Липтон(зелёный) 0.5л",
-      description: "Пиздец какой вкусный напиток",
+      description: "Очень вкусный напиток",
       imagePath: "assets/images/drinks/1.png",
       price: 100,
       category: FoodCategory.drinks,
@@ -198,7 +200,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Липтон(лимон) 0.5л",
-      description: "Пиздец какой вкусный напиток",
+      description: "Очень вкусный напиток",
       imagePath: "assets/images/drinks/2.png",
       price: 100,
       category: FoodCategory.drinks,
@@ -214,7 +216,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Кола Любимая 0.5л",
-      description: "Пиздец какой вкусный напиток",
+      description: "Очень вкусный напиток",
       imagePath: "assets/images/drinks/4.png",
       price: 100,
       category: FoodCategory.drinks,
@@ -222,7 +224,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Кола Любимая 1л",
-      description: "Пиздец какой вкусный напиток",
+      description: "Очень вкусный напиток",
       imagePath: "assets/images/drinks/5.png",
       price: 120,
       category: FoodCategory.drinks,
@@ -235,12 +237,14 @@ class Restaurant extends ChangeNotifier {
   List<CartItem> _cart = [];
 
   ///delivery address(юзер может поменять/обновить)
-  String _deliveryAddress = "бла бла 151 улица";
+  String _deliveryAddress = "Укажите ваш адрес";
+  String _deliveryNumber = "Укажите ваш номер телефона";
 
 
   List<Food> get menu => _menu;
   List<CartItem> get cart => _cart;
   String get deliveryAddress => _deliveryAddress;
+  String get deliveryNumber => _deliveryNumber;
 
   ///операции(логика)
 
@@ -315,6 +319,11 @@ class Restaurant extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updatePhoneNumber(String newPhoneNumber) {
+    _deliveryNumber = newPhoneNumber;
+    notifyListeners();
+  }
+
 
   ///generate a receipt
   String displayCartReceipt() {
@@ -347,7 +356,11 @@ class Restaurant extends ChangeNotifier {
     receipt.writeln("Количество позиций: ${getTotalItemCount()}");
     receipt.writeln("Цена: ${_formatPrice(getTotalPrice())}");
     receipt.writeln();
+    receipt.writeln("Номер телефона: $deliveryNumber");
+    receipt.writeln();
     receipt.writeln("Адрес доставки: $deliveryAddress");
+
+
 
     return receipt.toString();
   }

@@ -16,7 +16,7 @@ class CustomSliverAppBar extends StatelessWidget {
     return SliverAppBar(
       //automaticallyImplyLeading: false,
       //snap: true,
-      expandedHeight: 340,
+      //expandedHeight: 340,
       collapsedHeight: 120,
       floating: true,
       pinned: true,

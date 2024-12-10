@@ -17,6 +17,9 @@ class Food {
 
 enum FoodCategory {
   rolls,
+  friedRolls,
+  bakedRolls,
+  sets,
   pizza,
   wok,
   snacks,

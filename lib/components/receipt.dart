@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:food_app/components/custom_button.dart';
 import 'package:food_app/models/restaurant.dart';
@@ -10,7 +12,8 @@ class Receipt extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25, bottom: 25, top: 25),
+        padding:
+            const EdgeInsets.only(left: 25, right: 25, bottom: 25, top: 25),
         child: Center(
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.center,
@@ -34,14 +37,18 @@ class Receipt extends StatelessWidget {
                       ),
                       padding: const EdgeInsets.all(25),
                       child: Consumer<Restaurant>(
-                          builder: (context, restaurant, child) =>
-                              Text(restaurant.displayCartReceipt(),)),
+                          builder: (context, restaurant, child) => Text(
+                                restaurant.displayCartReceipt(),
+                              )),
                     ),
                   ],
                 ),
               ),
               SizedBox(height: 25),
-              CustomButton(text: "Заказать")
+              // CustomButton(
+              //   text: "Выход",
+              //   //onTap: exit(0),
+              // )
             ],
           ),
         ),

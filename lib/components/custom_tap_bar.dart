@@ -7,6 +7,12 @@ extension FoodCategoryToRussianExt on FoodCategory {
     switch (this) {
       case FoodCategory.rolls:
         return 'Роллы';
+      case FoodCategory.friedRolls:
+        return 'Жаренные роллы';
+      case FoodCategory.bakedRolls:
+        return 'Запечённые роллы';
+      case FoodCategory.sets:
+        return 'Сеты';
       case FoodCategory.pizza:
         return 'Пицца';
       case FoodCategory.wok:
@@ -35,6 +41,9 @@ class CustomTapBar extends StatelessWidget {
   Map<FoodCategory, String> foodCategoryToRussian(FoodCategory category) {
     return {
       FoodCategory.rolls: 'роллы',
+      FoodCategory.friedRolls: 'жаренные роллы',
+      FoodCategory.bakedRolls: 'запечённые роллы',
+      FoodCategory.sets: 'сеты',
       FoodCategory.pizza: 'пицца',
       FoodCategory.wok: 'вок',
       FoodCategory.snacks: 'закуски',
